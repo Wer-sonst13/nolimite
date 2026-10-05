@@ -1,46 +1,63 @@
 <!doctype html><html><head><meta charset="utf-8"><title>NoLimite</title>
 <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--ac:#7c5cff;--bg:#050505;--pn:#101010;--bd:#262626;--tx:#eee}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px "Segoe UI",sans-serif;height:100vh;display:flex;overflow:hidden}
+:root{--ac:#7c5cff;--bg:#050505;--pn:#101010;--pn2:#171717;--bd:#262626;--tx:#eee}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px "Segoe UI",sans-serif;height:100vh;display:flex;overflow:hidden;user-select:none}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:#2c2c2c;border-radius:8px}::-webkit-scrollbar-thumb:hover{background:var(--ac)}
 .px{font-family:"Silkscreen",monospace;letter-spacing:1px;text-transform:uppercase}
-nav{width:96px;background:#0c0c0c;border-right:1px solid var(--bd);display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:10px}
-nav .logo{font-size:26px;margin-bottom:14px}nav .sp{flex:1}
-.nb{width:70px;padding:12px 0 8px;border-radius:16px;text-align:center;cursor:pointer;color:#999;border:1px solid transparent}
-.nb i{display:block;font-style:normal;font-size:26px;margin-bottom:4px}.nb span{font-size:9px}
-.nb:hover{color:#fff}.nb.on{background:#1c1c1c;border-color:#444;color:#fff;box-shadow:0 2px 10px #000}
+nav{width:96px;background:#0b0b0b;border-right:1px solid var(--bd);display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:8px}
+nav .logo{font-size:28px;margin-bottom:12px;color:var(--ac);text-shadow:0 0 14px var(--ac);transition:.3s;cursor:pointer}nav .logo:hover{transform:scale(1.2) rotate(-8deg)}
+.nb{width:72px;padding:12px 0 8px;border-radius:16px;text-align:center;cursor:pointer;color:#888;border:1px solid transparent;transition:all .18s}
+.nb i{display:block;font-style:normal;font-size:26px;margin-bottom:4px;transition:transform .18s}.nb span{font-size:9px}
+.nb:hover{color:#fff;background:#161616;transform:translateY(-2px)}.nb:hover i{transform:scale(1.18)}
+.nb.on{background:#1d1d1d;border-color:#454545;color:#fff;box-shadow:0 3px 0 #000,0 0 18px #7c5cff33}.sp{flex:1}
 .col{flex:1;display:flex;flex-direction:column;min-width:0}
 header{display:flex;align-items:center;gap:12px;padding:10px 20px;border-bottom:1px solid var(--bd)}
-.arr{cursor:pointer;color:#888;font-size:16px;padding:0 4px}.sp{flex:1}
+.arr{cursor:pointer;color:#888;font-size:18px;padding:4px 8px;border-radius:8px;transition:.15s}.arr:hover{background:#1a1a1a;color:#fff}
 .logo2{font-size:15px;font-weight:700}.sub{font-size:10px;color:#666}
-.chip{background:var(--pn);border:1px solid var(--bd);border-radius:20px;padding:7px 16px;cursor:pointer;font-size:12px}
-.green{border-color:#1e8f68;background:#0c2a22;color:#6fe3b7}
-main{flex:1;display:flex;min-height:0}
-.page{display:none;flex:1;min-width:0}.page.on{display:flex}
-.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative}
+.chip{background:var(--pn);border:1px solid var(--bd);border-radius:20px;padding:8px 18px;cursor:pointer;font-size:12px;transition:all .18s}
+.chip:hover{transform:translateY(-2px);border-color:var(--ac);box-shadow:0 4px 14px #7c5cff33}.chip:active{transform:scale(.97)}
+.green{border-color:#1e8f68;background:#0c2a22;color:#6fe3b7}.green:hover{border-color:#3fe0a8;box-shadow:0 4px 14px #1e8f6844}
+main{flex:1;display:flex;min-height:0;position:relative}
+.page{display:none;flex:1;min-width:0}.page.on{display:flex;animation:fade .25s ease}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;background:radial-gradient(circle at 50% 45%,#16102e55,transparent 60%)}
 .scroll{flex:1;overflow:auto;padding:22px 28px}
-.nick{font-size:26px}.body{height:300px;image-rendering:pixelated}
+.nick{font-size:26px}.body{height:300px;image-rendering:pixelated;filter:drop-shadow(0 12px 18px #000);transition:transform .3s}.body:hover{transform:scale(1.04)}
 @keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}.anim{animation:sway 3s ease-in-out infinite}
 .launch{display:flex;gap:8px}
-button{background:#1c1c1c;color:var(--tx);border:1px solid #3a3a3a;border-radius:16px;padding:14px 26px;font-size:15px;cursor:pointer}
-button:hover{border-color:var(--ac)}.big{min-width:320px;box-shadow:0 3px 0 #000}.big small{display:block;color:#999;font-size:12px;margin-top:2px;text-transform:none}
-select,input[type=text],input:not([type]){background:#141414;color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:9px}
-.right{width:340px;border-left:1px solid var(--bd);padding:16px;overflow:auto}
-h3{margin:0 0 12px;font-size:12px;color:#bbb}
-.news{height:150px;border-radius:18px;margin-bottom:6px;border:2px solid #2a2a2a;display:flex;align-items:flex-end;padding:12px;font-weight:700;font-size:20px}
-.n1{background:linear-gradient(135deg,#0b3d63,#1f8fbf)}.n2{background:linear-gradient(135deg,#1c6b2a,#7bc043)}.n3{background:linear-gradient(135deg,#4a2d1a,#9a6b3a)}
+button{background:linear-gradient(#222,#171717);color:var(--tx);border:1px solid #3a3a3a;border-radius:16px;padding:14px 26px;font-size:15px;cursor:pointer;transition:all .18s;box-shadow:0 3px 0 #000}
+button:hover{transform:translateY(-2px);border-color:var(--ac);box-shadow:0 5px 0 #000,0 0 22px #7c5cff44;background:linear-gradient(#2a2a2a,#1b1b1b)}
+button:active{transform:translateY(2px);box-shadow:0 1px 0 #000}button:disabled{opacity:.5;pointer-events:none}
+.big{min-width:320px}.big small{display:block;color:#999;font-size:12px;margin-top:2px;text-transform:none}
+select,input[type=text],input:not([type]){background:#141414;color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:10px 12px;transition:.15s;outline:none}
+select:hover,input:hover{border-color:#444}input:focus,select:focus{border-color:var(--ac);box-shadow:0 0 0 3px #7c5cff22}
+.right{width:340px;border-left:1px solid var(--bd);padding:16px;overflow:auto}h3{margin:0 0 12px;font-size:12px;color:#bbb}
+.news{height:150px;border-radius:18px;margin-bottom:6px;border:2px solid #2a2a2a;display:flex;align-items:flex-end;padding:12px;font-weight:700;font-size:20px;cursor:pointer;transition:all .25s;background-size:140%;background-position:center}
+.news:hover{transform:scale(1.025);border-color:var(--ac);background-size:170%;box-shadow:0 8px 24px #000}
+.n1{background-image:linear-gradient(135deg,#0b3d63,#1f8fbf)}.n2{background-image:linear-gradient(135deg,#1c6b2a,#7bc043)}.n3{background-image:linear-gradient(135deg,#4a2d1a,#9a6b3a)}
 .cap{font-size:10px;color:#aaa;margin:10px 0 4px}
-.inst{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--bd);border-radius:14px;margin-bottom:8px;cursor:pointer;background:var(--pn)}
-.inst.sel{border-color:var(--ac)}.inst span{flex:1}.inst small{color:#888}
-.mod{display:flex;gap:12px;align-items:center;padding:10px;border:1px solid var(--bd);border-radius:14px;margin-bottom:8px;background:var(--pn)}
-.mod img{width:42px;height:42px;border-radius:10px;background:#222}.mod div{flex:1}.mod small{color:#888}.mod button{padding:8px 16px;font-size:13px}
-.tog{width:40px;height:22px;border-radius:12px;background:#333;position:relative;cursor:pointer}.tog:after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#aaa;transition:.2s}.tog.on{background:var(--ac)}.tog.on:after{left:21px;background:#fff}
-#bar{position:absolute;bottom:0;left:0;height:3px;background:var(--ac);width:0}
-#log{position:absolute;bottom:10px;left:14px;right:14px;font:11px monospace;color:#777;max-height:40px;overflow:hidden}
-dialog{background:var(--pn);color:var(--tx);border:1px solid var(--bd);border-radius:16px;width:460px}dialog::backdrop{background:#000a}
-.mods label{display:inline-block;width:48%;padding:2px 0}.row{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.pc{border:1px solid var(--bd);border-radius:18px;padding:16px;background:var(--pn);cursor:pointer;transition:all .2s;position:relative}
+.pc:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 10px 26px #000a,0 0 20px #7c5cff22}.pc.sel{border-color:var(--ac);background:#15112b}
+.pc .ic{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--ac),#2b1d7a);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:10px;transition:.2s}.pc:hover .ic{transform:rotate(-6deg) scale(1.08)}
+.pc small{color:#888;display:block;margin-top:2px}.pc .acts{display:flex;gap:6px;margin-top:12px}.pc .acts button{padding:6px 12px;font-size:12px;border-radius:10px;box-shadow:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.cc{padding:6px 14px;border-radius:16px;border:1px solid var(--bd);background:var(--pn);cursor:pointer;font-size:12px;transition:.15s}
+.cc:hover{border-color:var(--ac);transform:translateY(-2px)}.cc.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.mod{display:flex;gap:14px;align-items:center;padding:12px 14px;border:1px solid var(--bd);border-radius:16px;margin-bottom:8px;background:var(--pn);cursor:pointer;transition:all .18s}
+.mod:hover{transform:translateX(4px);border-color:#444;background:var(--pn2)}.mod.sel{border-color:var(--ac);background:#15112b}
+.mod img{width:48px;height:48px;border-radius:12px;background:#222;object-fit:cover}.mod .m{flex:1;min-width:0}.mod .m small{color:#888;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mod .st{font-size:11px;color:#888;text-align:right;min-width:90px}.badge{color:#6fe3b7;font-size:11px}
+.ck{width:22px;height:22px;border:2px solid #444;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;color:transparent;transition:.15s}.mod.sel .ck{background:var(--ac);border-color:var(--ac);color:#fff}
+.sk{height:72px;border-radius:16px;margin-bottom:8px;background:linear-gradient(90deg,#121212,#1c1c1c,#121212);background-size:200%;animation:sh 1.2s infinite}@keyframes sh{to{background-position:-200% 0}}
+.bulk{position:sticky;bottom:0;margin:8px -28px -22px;padding:14px 28px;background:#0b0b0bee;border-top:1px solid var(--bd);display:none;align-items:center;gap:14px;backdrop-filter:blur(8px)}.bulk.on{display:flex}
+.tog{width:40px;height:22px;border-radius:12px;background:#333;position:relative;cursor:pointer;transition:.2s}.tog:after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#aaa;transition:.2s}.tog.on{background:var(--ac)}.tog.on:after{left:21px;background:#fff}
+#bar{position:absolute;bottom:0;left:0;height:3px;background:var(--ac);width:0;transition:width .3s;box-shadow:0 0 10px var(--ac)}
+#toasts{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:9}
+.toast{background:#181818;border:1px solid var(--ac);border-radius:12px;padding:10px 16px;font-size:13px;box-shadow:0 6px 20px #000;animation:ti .25s}@keyframes ti{from{opacity:0;transform:translateX(30px)}}
+dialog{background:var(--pn);color:var(--tx);border:1px solid var(--bd);border-radius:18px;width:480px;animation:fade .2s}dialog::backdrop{background:#000b;backdrop-filter:blur(3px)}
+.mods label{display:inline-block;width:48%;padding:3px 0;cursor:pointer}.row{display:flex;gap:10px;align-items:center;margin-bottom:16px}.info{color:#999;line-height:1.6}
 </style></head><body>
-<nav><div class="logo">⚡</div>
+<nav><div class="logo" onclick="nav('play')">⚡</div>
  <div class="nb on px" data-p="play"><i>▶</i><span>Spielen</span></div>
  <div class="nb px" data-p="prof"><i>▤</i><span>Profile</span></div>
  <div class="nb px" data-p="mods"><i>▦</i><span>Mods</span></div>
@@ -49,66 +66,88 @@ dialog{background:var(--pn);color:var(--tx);border:1px solid var(--bd);border-ra
  <div class="sp"></div><div class="nb px" data-p="set"><i>⚙</i><span>&nbsp;</span></div></nav>
 <div class="col">
 <header><span class="arr" onclick="go(-1)">←</span><span class="arr" onclick="go(1)">→</span>
- <div><div class="logo2 px">NoLimite</div><div class="sub">v0.1.0</div></div><div class="sp"></div>
- <div class="chip green px" id="ic">0 Instanz</div><div class="chip px" id="acc" onclick="login()">Anmelden</div></header>
+ <div><div class="logo2 px">NoLimite</div><div class="sub">v0.3.0</div></div><div class="sp"></div>
+ <div class="chip green px" id="ic" onclick="nav('prof')">0 Instanz</div><div class="chip px" id="acc" onclick="login()">Anmelden</div></header>
 <main>
 <section class="page on" id="play"><div class="center"><div id="bar"></div>
   <div class="nick px" id="nick">Steve</div><img class="body anim" id="skin" src="https://mc-heads.net/body/MHF_Steve">
-  <div class="launch"><button class="big px" onclick="launch()">Launch<small id="sub">Keine Instanz</small></button>
-  <button onclick="nav('prof')">▾</button></div>
-  <div style="position:absolute;top:14px;right:20px;display:flex;gap:10px;align-items:center;color:#aaa"><span class="px" style="font-size:11px">Skin-Animation</span><div class="tog on" id="tog"></div></div>
-  <div id="log"></div></div>
+  <div class="launch"><button class="big px" id="go" onclick="launch()">Launch<small id="sub">Keine Instanz</small></button><button onclick="nav('prof')">▾</button></div>
+  <div style="position:absolute;top:14px;right:20px;display:flex;gap:10px;align-items:center;color:#aaa"><span class="px" style="font-size:11px">Skin-Animation</span><div class="tog on" id="tog"></div></div></div>
  <div class="right"><h3 class="px">Neuigkeiten</h3>
   <div class="cap px">NoLimite</div><div class="news n1">Willkommen</div>
-  <div class="cap px">Mods</div><div class="news n2">Ein Klick</div>
-  <div class="cap px">Profile</div><div class="news n3">Jede Version für sich</div></div></section>
-<section class="page" id="prof"><div class="scroll"><div class="row"><h3 class="px" style="margin:0;flex:1">Profile</h3><button onclick="dlg.showModal()">＋ Neues Profil</button></div><div id="list"></div></div></section>
-<section class="page" id="mods"><div class="scroll"><h3 class="px">Mods (Modrinth)</h3>
-  <div class="row"><input id="q" placeholder="Mod suchen …" style="flex:1" onkeydown="if(event.key=='Enter')search()"><button onclick="search()">Suchen</button></div><div id="res"></div></div></section>
+  <div class="cap px">Mods</div><div class="news n2" onclick="nav('mods')">Ein Klick</div>
+  <div class="cap px">Profile</div><div class="news n3" onclick="nav('prof')">Jede Version für sich</div></div></section>
+<section class="page" id="prof"><div class="scroll"><div class="row"><h3 class="px" style="margin:0;flex:1">Profile</h3><button onclick="dlg.showModal()">＋ Neues Profil</button></div><div class="grid" id="list"></div></div></section>
+<section class="page" id="mods"><div class="scroll"><div class="row"><h3 class="px" style="margin:0">Mods</h3><span class="info" id="mcinfo"></span><div class="sp"></div>
+  <select id="sort" onchange="mload(true)"><option value="relevance">Beliebtheit</option><option value="downloads">Downloads</option><option value="updated">Zuletzt aktualisiert</option><option value="newest">Neueste</option></select></div>
+  <div class="row"><input id="q" placeholder="🔍  Mods auf Modrinth suchen …" style="flex:1" oninput="deb()"></div>
+  <div class="chips" id="chips"></div><div id="res"></div><div style="text-align:center"><button id="more" style="display:none" onclick="mload(false)">Mehr laden</button></div>
+  <div class="bulk" id="bulk"><span id="bn"></span><div class="sp"></div><button onclick="clearSel()">Leeren</button><button class="px" onclick="installSel()">Installieren</button></div></div></section>
 <section class="page" id="skins"><div class="scroll"><h3 class="px">Skins</h3>
-  <div class="row"><input id="sn" placeholder="Spielername" style="flex:1"><button onclick="skinOf()">Anzeigen</button></div>
+  <div class="row"><input id="sn" placeholder="Spielername" style="flex:1" onkeydown="if(event.key=='Enter')skinOf()"><button onclick="skinOf()">Anzeigen</button></div>
   <img id="sk2" class="body" src="https://mc-heads.net/body/MHF_Steve"></div></section>
-<section class="page" id="capes"><div class="scroll"><h3 class="px">Capes</h3><div class="mod"><div>Capes für alle Spieler benötigen einen eigenen Server.<br><small>Installiere in der Mod-Suche „Capes“, um Community-Capes zu sehen.</small></div></div></div></section>
+<section class="page" id="capes"><div class="scroll"><h3 class="px">Capes</h3><div class="mod"><div class="m">Capes für alle Spieler benötigen einen eigenen Server.<small style="white-space:normal">Installiere in der Mod-Suche „Capes“, um Community-Capes zu sehen.</small></div></div></div></section>
 <section class="page" id="set"><div class="scroll"><h3 class="px">Einstellungen</h3>
   <div class="row">RAM <select id="ram"><option>2</option><option>3</option><option selected>4</option><option>6</option><option>8</option></select> GB</div>
-  <div class="row">Akzentfarbe <input type="color" id="col" value="#7c5cff"></div></div></section>
+  <div class="row">Akzentfarbe <input type="color" id="col" value="#7c5cff" style="width:60px;height:36px;padding:2px"></div>
+  <div class="info">Im Spiel öffnet <b>Rechts-Shift</b> das NoLimite-Menü (sobald die NoLimite-Mod im Profil ist).</div></div></section>
 </main></div>
+<div id="toasts"></div>
 <dialog id="dlg"><h3 class="px">Neues Profil</h3>
  <p><input id="nm" placeholder="Name" value="NL"> <select id="mcv"></select></p>
+ <p class="info" style="margin:0 0 8px">Die NoLimite-Mod (Menü mit Rechts-Shift) ist für 1.21.4 dabei.</p>
  <div class="mods" id="mlist"></div><p><button onclick="create()">Erstellen</button> <button onclick="dlg.close()">Abbrechen</button></p></dialog>
 <script>
 const { ipcRenderer: ipc } = require("electron"); const $ = id => document.getElementById(id);
 const MODS = {"fabric-api":"Fabric API","modmenu":"Mod Menu","yacl":"YACL","cloth-config":"Cloth Config","sodium":"Sodium","lithium":"Lithium","ferrite-core":"FerriteCore","immediatelyfast":"ImmediatelyFast","entityculling":"Entity Culling","dynamic-fps":"Dynamic FPS","sodium-extra":"Sodium Extra","iris":"Iris (Shader)","appleskin":"AppleSkin","betterf3":"BetterF3","zoomify":"Zoomify","freelook":"Freelook","mouse-tweaks":"Mouse Tweaks","capes":"Capes"};
 const OFF = ["iris","capes"]; let list = [], sel = null, hist = ["play"], hi = 0;
+const CATS = {"":"Alle",optimization:"Optimierung",utility:"Nützlich",library:"Bibliothek",decoration:"Dekoration",technology:"Technik",adventure:"Abenteuer",magic:"Magie",storage:"Lagerung",equipment:"Ausrüstung","game-mechanics":"Mechaniken",mobs:"Mobs",worldgen:"Weltgenerierung",social:"Sozial",minigame:"Minigame"};
 $("mlist").innerHTML = Object.entries(MODS).map(([k,v]) => `<label><input type="checkbox" value="${k}" ${OFF.includes(k)?"":"checked"}> ${v}</label>`).join("");
-// Navigation
-function show(p){ document.querySelectorAll(".page").forEach(e => e.classList.toggle("on", e.id===p)); document.querySelectorAll(".nb").forEach(e => e.classList.toggle("on", e.dataset.p===p)); }
+function toast(t){ const d = document.createElement("div"); d.className = "toast"; d.textContent = t; $("toasts").appendChild(d); setTimeout(() => d.remove(), 3500); }
+function show(p){ document.querySelectorAll(".page").forEach(e => e.classList.toggle("on", e.id===p)); document.querySelectorAll(".nb").forEach(e => e.classList.toggle("on", e.dataset.p===p)); if(p==="mods") mload(true); }
 function nav(p){ hist = hist.slice(0, hi+1); hist.push(p); hi++; show(p); }
 function go(d){ const n = hi+d; if(n<0||n>=hist.length) return; hi = n; show(hist[hi]); }
 document.querySelectorAll(".nb").forEach(e => e.onclick = () => nav(e.dataset.p));
-// Einstellungen
 const ST = JSON.parse(localStorage.nl || "{}"); const save = () => localStorage.nl = JSON.stringify({ram:$("ram").value,col:$("col").value});
 if(ST.ram) $("ram").value = ST.ram; if(ST.col) { $("col").value = ST.col; document.documentElement.style.setProperty("--ac", ST.col); }
 $("ram").onchange = save; $("col").oninput = () => { document.documentElement.style.setProperty("--ac", $("col").value); save(); };
 $("tog").onclick = () => { $("tog").classList.toggle("on"); $("skin").classList.toggle("anim"); };
-ipc.on("log", (_, m) => $("log").textContent = String(m).slice(0,160));
+ipc.on("log", (_, m) => { if(String(m).startsWith("-")) toast(String(m).slice(0,90)); });
 ipc.on("progress", (_, p) => $("bar").style.width = p + "%");
 // Profile
-function render(){ $("list").innerHTML = list.map(i => `<div class="inst ${i.id===sel?"sel":""}" onclick="pick('${i.id}')"><span class="px">${i.name} <small>${i.mc} · Fabric</small></span><small onclick="event.stopPropagation();del('${i.id}')">✕</small></div>`).join("") || "<small>Noch kein Profil – klicke ＋</small>";
-  const c = list.find(i => i.id===sel); $("sub").textContent = c ? `${c.name} ${c.mc}` : "Keine Instanz"; $("ic").textContent = list.length + " Instanz"; }
-function pick(id){ sel = id; render(); }
+function render(){ $("list").innerHTML = list.map(i => `<div class="pc ${i.id===sel?"sel":""}" onclick="pick('${i.id}')"><div class="ic">${i.name.slice(0,2).toUpperCase()}</div><b class="px">${i.name}</b><small>${i.mc} · Fabric · ${(i.installed||[]).length} Mods</small>
+  <div class="acts"><button onclick="event.stopPropagation();ipc.invoke('folder','${i.id}')">Ordner</button><button onclick="event.stopPropagation();del('${i.id}')">Löschen</button></div></div>`).join("") || "<span class='info'>Noch kein Profil – klicke oben auf ＋ Neues Profil.</span>";
+  const c = list.find(i => i.id===sel); $("sub").textContent = c ? `${c.name} ${c.mc}` : "Keine Instanz"; $("ic").textContent = list.length + " Instanz"; $("mcinfo").textContent = c ? `für ${c.name} (${c.mc})` : ""; }
+function pick(id){ sel = id; render(); toast("Profil gewählt"); }
 async function load(){ list = await ipc.invoke("instances"); sel = sel || (list[0] && list[0].id); render(); }
 async function create(){ const mods = [...document.querySelectorAll("#mlist input:checked")].map(x => x.value);
-  $("dlg").close(); list = await ipc.invoke("create", { name: $("nm").value, mc: $("mcv").value, mods }); sel = list[0].id; render(); }
-async function del(id){ list = await ipc.invoke("delete", id); sel = list[0] && list[0].id; render(); }
+  $("dlg").close(); toast("Profil wird erstellt …"); list = await ipc.invoke("create", { name: $("nm").value, mc: $("mcv").value, mods }); sel = list[0].id; render(); toast("Profil fertig ✓"); }
+async function del(id){ if(!confirm("Profil wirklich löschen?")) return; list = await ipc.invoke("delete", id); sel = list[0] && list[0].id; render(); }
 // Mods
-async function search(){ const c = list.find(i => i.id===sel); if(!c){ $("res").textContent = "Bitte zuerst ein Profil anlegen."; return; }
-  const r = await ipc.invoke("search", { q: $("q").value, mc: c.mc });
-  $("res").innerHTML = r.map(m => `<div class="mod"><img src="${m.icon||""}"><div><b>${m.title}</b><br><small>${m.desc}</small></div><button onclick="add('${m.slug}',this)">Installieren</button></div>`).join(""); }
-async function add(p, b){ b.textContent = "…"; await ipc.invoke("addmod", { id: sel, project: p }); b.textContent = "✓"; }
+const M = { off: 0, total: 0, picked: new Set() }; let timer;
+$("chips").innerHTML = Object.entries(CATS).map(([k,v]) => `<div class="cc ${k===""?"on":""}" data-c="${k}">${v}</div>`).join("");
+M.cat = ""; document.querySelectorAll(".cc").forEach(e => e.onclick = () => { M.cat = e.dataset.c; document.querySelectorAll(".cc").forEach(x => x.classList.toggle("on", x===e)); mload(true); });
+function deb(){ clearTimeout(timer); timer = setTimeout(() => mload(true), 350); }
+const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1)+"M" : n >= 1e3 ? Math.round(n/1e3)+"k" : n;
+async function mload(reset){ const c = list.find(i => i.id===sel);
+  if(!c){ $("res").innerHTML = "<span class='info'>Lege zuerst ein Profil an (Seite „Profile“).</span>"; return; }
+  if(reset){ M.off = 0; $("res").innerHTML = "<div class='sk'></div>".repeat(6); }
+  try { const r = await ipc.invoke("search", { q: $("q").value, mc: c.mc, cat: M.cat, sort: $("sort").value, offset: M.off });
+    M.total = r.total; const html = r.hits.map(m => { const inst = (c.installed||[]).includes(m.slug);
+      return `<div class="mod ${M.picked.has(m.slug)?"sel":""}" data-s="${m.slug}" onclick="pickMod('${m.slug}',this)"><div class="ck">✓</div><img src="${m.icon||""}"><div class="m"><b>${m.title}</b> <small style="display:inline">von ${m.author}</small><small>${m.desc}</small></div>
+      <div class="st">⬇ ${fmt(m.dl)}<br>${inst?"<span class='badge'>✓ installiert</span>":""}</div></div>`; }).join("");
+    if(reset) $("res").innerHTML = html || "<span class='info'>Keine Mods gefunden.</span>"; else $("res").insertAdjacentHTML("beforeend", html);
+    M.off += r.hits.length; $("more").style.display = M.off < M.total ? "inline-block" : "none";
+  } catch(e){ toast("Suche fehlgeschlagen: " + e.message); } }
+function pickMod(s, el){ M.picked.has(s) ? M.picked.delete(s) : M.picked.add(s); el.classList.toggle("sel"); bulk(); }
+function bulk(){ $("bulk").classList.toggle("on", M.picked.size > 0); $("bn").textContent = M.picked.size + " Mod(s) ausgewählt"; }
+function clearSel(){ M.picked.clear(); document.querySelectorAll(".mod.sel").forEach(e => e.classList.remove("sel")); bulk(); }
+async function installSel(){ const p = [...M.picked]; toast(`Installiere ${p.length} Mod(s) …`);
+  const inst = await ipc.invoke("addmods", { id: sel, projects: p }); list.find(i => i.id===sel).installed = inst; clearSel(); render(); mload(true); toast("Fertig ✓"); }
 // Skins / Login / Launch
 function skinOf(){ $("sk2").src = "https://mc-heads.net/body/" + $("sn").value; }
-async function login(){ try { const a = await ipc.invoke("login"); $("acc").textContent = a.name; $("nick").textContent = a.name; $("skin").src = "https://mc-heads.net/body/" + a.uuid; } catch(e){ $("log").textContent = e.message; } }
-async function launch(){ if(!sel) return nav("prof"); try { await ipc.invoke("launch", { id: sel, ram: $("ram").value }); } catch(e){ $("log").textContent = e.message; } }
-(async () => { const v = await ipc.invoke("versions"); $("mcv").innerHTML = v.map(x => `<option>${x}</option>`).join(""); load(); })();
+async function login(){ try { const a = await ipc.invoke("login"); $("acc").textContent = a.name; $("nick").textContent = a.name; $("skin").src = "https://mc-heads.net/body/" + a.uuid; toast("Angemeldet als " + a.name); } catch(e){ toast("Login: " + e.message); } }
+async function launch(){ if(!sel){ toast("Bitte zuerst ein Profil anlegen"); return nav("prof"); } const b = $("go"); b.disabled = true; toast("Spiel startet …");
+  try { await ipc.invoke("launch", { id: sel, ram: $("ram").value }); } catch(e){ toast(e.message); } setTimeout(() => b.disabled = false, 4000); }
+(async () => { const v = await ipc.invoke("versions"); $("mcv").innerHTML = v.map(x => `<option>${x}</option>`).join(""); if(v.includes("1.21.4")) $("mcv").value = "1.21.4"; load(); })();
 </script></body></html>

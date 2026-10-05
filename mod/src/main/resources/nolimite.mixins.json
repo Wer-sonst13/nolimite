@@ -1,0 +1,7 @@
+{
+  "required": false,
+  "package": "gg.nolimite.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["ScoreboardMixin"],
+  "injectors": { "defaultRequire": 0 }
+}

@@ -1,6 +1,6 @@
 {
   "name": "nolimite",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "description": "NoLimite Minecraft Launcher",
   "main": "main.js",
   "scripts": {
@@ -31,6 +31,12 @@
         "provider": "github",
         "owner": "Wer-sonst13",
         "repo": "nolimite"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "."
       }
     ]
   }
